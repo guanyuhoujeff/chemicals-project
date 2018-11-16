@@ -1,0 +1,20 @@
+<div class="grid-container" class="mat-h1">
+  <mat-grid-list cols="2" rowHeight="750px">
+    <!-- <mat-grid-list cols="2" rowHeight="1200px"> -->
+    <!--
+      <mat-grid-tile
+        *ngFor="let card of (cards | async)"
+        [colspan]="card.cols"
+        [rowspan]="card.rows"
+      >
+    -->
+    <mat-card class="dashboard-card">
+      <mat-toolbar-row class="real-time-alert-title">
+        <span>即時新聞監測</span>
+      </mat-toolbar-row>
+      <mat-toolbar-row></mat-toolbar-row>
+      <app-real-time-news></app-real-time-news>
+    </mat-card>
+    <!-- </mat-grid-tile> -->
+  </mat-grid-list>
+</div>

@@ -1,0 +1,81 @@
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+    <mat-tab label="全文件統計表">
+        <div class="grid-container" class="mat-h1">
+            <app-marked-content></app-marked-content>
+            <mat-grid-list cols="2" rowHeight="750px">
+              <!-- <mat-grid-list cols="2" rowHeight="1200px"> -->
+              <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+                <mat-card class="dashboard-card">
+
+                  <mat-card-header>
+                    <mat-card-title>
+                      {{selectDocumentTable}}
+                      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+
+                      <mat-menu #menu="matMenu" xPosition="before">
+                        <button mat-menu-item (click)="getSelectDocumentTable(theSelectDocumentTable)" *ngFor="let theSelectDocumentTable of selectDocumentTableList">{{theSelectDocumentTable}}</button>
+                      </mat-menu>
+
+                    </mat-card-title>
+                  </mat-card-header>
+
+                  <app-key-words-counts-table *ngIf="selectDocumentTable === '全文件關鍵詞種類統計表'" (messageEvent)="receiveMessage($event)"></app-key-words-counts-table>
+                  <app-key-words-tf-table *ngIf="selectDocumentTable === '全文件關鍵詞詞頻統計表'" (messageEvent)="receiveMessage($event)"></app-key-words-tf-table>
+
+                  <!-- <app-test></app-test> -->
+                  <!-- <app-key-words-counts-table (messageEvent)="receiveMessage($event)"></app-key-words-counts-table> -->
+                  <!-- <mat-card-content class="dashboard-card-content">
+                            <div>
+
+                            </div>
+                          </mat-card-content> -->
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+    </mat-tab>
+
+    <mat-tab label="關鍵詞統計表">
+        <div class="grid-container" class="mat-h1">
+            <mat-grid-list cols="2" rowHeight="750px">
+              <!-- <mat-grid-list cols="2" rowHeight="1200px"> -->
+              <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+                <mat-card class="dashboard-card">
+
+                  <mat-card-header>
+                    <mat-card-title>
+                      {{selectKeyWordTable}}
+
+                      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+
+                      <mat-menu #menu="matMenu" xPosition="before">
+                        <button mat-menu-item (click)="getSelectKeyWordTable(theSelectKeyWordTable)" *ngFor="let theSelectKeyWordTable of selectKeyWordTableList">{{theSelectKeyWordTable}}</button>
+                      </mat-menu>
+
+                    </mat-card-title>
+                  </mat-card-header>
+
+                  <app-chemicals-key-words *ngIf="selectKeyWordTable === '化學關鍵字統計表'" (messageEvent)="receiveMessage($event)"></app-chemicals-key-words>
+                  <app-accident-characteristics-key-words *ngIf="selectKeyWordTable === '事故特徵關鍵字統計表'" (messageEvent)="receiveMessage($event)"></app-accident-characteristics-key-words>
+                  <app-accident-info-key-words *ngIf="selectKeyWordTable === '事故訊息關鍵字統計表'" (messageEvent)="receiveMessage($event)"></app-accident-info-key-words>
+
+                  <!-- <app-test></app-test> -->
+                  <!-- <app-key-words-counts-table (messageEvent)="receiveMessage($event)"></app-key-words-counts-table> -->
+                  <!-- <mat-card-content class="dashboard-card-content">
+                            <div>
+
+                            </div>
+                          </mat-card-content> -->
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
+

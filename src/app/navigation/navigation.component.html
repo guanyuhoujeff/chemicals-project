@@ -1,0 +1,66 @@
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <mat-toolbar>選單</mat-toolbar>
+
+    <mat-nav-list>
+      <mat-list-item *ngFor="let listItem of navigationList">
+        <a mat-list-item (click)=checkNavigation(listItem) class="mat-list-item-focus" [ngClass]="{'active': listItem.isActive}">{{listItem.name}}</a>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>chemicals-project</span>
+    </mat-toolbar>
+
+
+
+    <app-my-dashboard></app-my-dashboard>
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">智慧防災網站</h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+
+                   <mat-nav-list>
+                      <a mat-list-item  *ngFor="let listItem of navigationList"
+                       (click)=checkNavigation(listItem)
+                        class="mat-list-item-focus" [ngClass]="{'active': listItem.isActive}" >{{listItem.name}}</a>
+                    </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+          <app-my-dashboard *ngIf="selectNavigation === '關鍵詞統計表格'"></app-my-dashboard>
+          <app-realtime-news-dashboard *ngIf="selectNavigation === '即時新聞監測'"></app-realtime-news-dashboard>
+          <app-online-file-dashboard *ngIf="selectNavigation === '線上文件即時分析'"></app-online-file-dashboard>
+          <app-other-dashboard *ngIf="selectNavigation === '其他'"></app-other-dashboard>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
+
+
+
+
+
+

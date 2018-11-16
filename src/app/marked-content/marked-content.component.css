@@ -1,0 +1,17 @@
+.example-card {
+
+  max-width: 97%;
+  /* width: 80%; */
+  max-height: 600px;
+  overflow: auto;
+  /* position: absolute; */
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

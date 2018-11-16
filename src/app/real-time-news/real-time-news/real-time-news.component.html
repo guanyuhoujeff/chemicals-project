@@ -1,0 +1,215 @@
+<mat-tab-group
+  headerPosition="below"
+  [(selectedIndex)]="alertTabIndex"
+  (selectedTabChange)="selectedtAlertNewsChanged()"
+  #tabGroup
+>
+  <mat-tab label="警示強度"  disabled="true">
+      <div  style="font-size: 20px; text-align: center;">請選擇新聞</div>
+  </mat-tab>
+
+  <mat-tab
+    label="{{ alertItem.newtile }}"
+    *ngFor="let alertItem of (alertRankList | async)"
+  >
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ alertItem.newtile }}</mat-card-title>
+        <mat-card-subtitle
+          >警示指標：{{ alertItem.alertCount }}</mat-card-subtitle
+        >
+        <mat-card-subtitle>{{ alertItem.newnDatetime }}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="alertItem.type === 'life'"
+          >即時生活版</mat-card-subtitle
+        >
+        <mat-card-subtitle *ngIf="alertItem.type === 'local'"
+          >即時社會版</mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <h3>標記結果：</h3>
+        <mat-divider></mat-divider>
+        <p>{{ alertItem.Marked_text }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a target="_blank" href="{{alertItem.newUrl}}">前往新聞頁面</a>
+      </mat-card-actions>
+    </mat-card>
+
+  </mat-tab>
+
+
+
+
+</mat-tab-group>
+<div class="card" class="show-info">
+    <mat-accordion>
+      <mat-expansion-panel class="show-info">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4 class="show-info">化學品關鍵字統計結果</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-chip-list>
+          <h6 class="show-info" *ngIf="selectedtAlertNews['R1_keyW_list'].length > 0">出現的化學品關鍵字：</h6>
+          <mat-chip  *ngFor="let r1 of selectedtAlertNews['R1_keyW_list']">{{
+            r1
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R1_count'] > 0">
+          出現化學品關鍵字的種類： {{ selectedtAlertNews["R1_count"] }}
+        </h6>
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R1_tf'] > 0">
+          出現化學品關鍵字的詞頻： {{ selectedtAlertNews["R1_tf"] }}
+        </h6>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel class="show-info">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4 class="show-info">事故特徵關鍵字統計結果</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-chip-list>
+          <h6 class="show-info"  *ngIf="selectedtAlertNews['R21_keyW_list'].length > 0">出現的事故特徵關鍵字：</h6>
+          <mat-chip *ngFor="let r21 of selectedtAlertNews['R21_keyW_list']">{{
+            r21
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R21_count'] > 0">
+          出現事故特徵關鍵字的種類： {{ selectedtAlertNews["R21_count"] }}
+        </h6>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R21_tf'] > 0">
+          出現事故特徵關鍵字的詞頻： {{ selectedtAlertNews["R21_tf"] }}
+        </h6>
+
+
+        <mat-chip-list>
+          <h6 class="show-info"  *ngIf="selectedtAlertNews['R22_keyW_list'].length > 0">出現的事故徵狀關鍵字：</h6>
+          <mat-chip *ngFor="let r22 of selectedtAlertNews['R22_keyW_list']">{{
+            r22
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info"  *ngIf="selectedtAlertNews['R22_count'] > 0">
+          出現事故徵狀關鍵字的種類： {{ selectedtAlertNews["R22_count"] }}
+        </h6>
+
+        <h6 class="show-info"   *ngIf="selectedtAlertNews['R22_tf'] > 0">
+          出現事故徵狀關鍵字的詞頻： {{ selectedtAlertNews["R22_tf"] }}
+        </h6>
+
+
+        <mat-chip-list>
+          <h6 class="show-info"  *ngIf="selectedtAlertNews['R23_keyW_list'].length > 0">出現的事故影響關鍵字：</h6>
+          <mat-chip *ngFor="let r23 of selectedtAlertNews['R23_keyW_list']">{{
+            r23
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R23_count'] > 0">
+          出現事故影響關鍵字的種類： {{ selectedtAlertNews["R23_count"] }}
+        </h6>
+
+        <h6 class="show-info"  *ngIf="selectedtAlertNews['R23_tf'] > 0">
+          出現事故影響關鍵字的詞頻： {{ selectedtAlertNews["R23_tf"] }}
+        </h6>
+
+        <mat-chip-list>
+          <h6 class="show-info"  *ngIf="selectedtAlertNews['R24_keyW_list'].length > 0">出現的事故專有名詞關鍵字：</h6>
+          <mat-chip *ngFor="let r24 of selectedtAlertNews['R24_keyW_list']">{{
+            r24
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info"  *ngIf="selectedtAlertNews['R24_count'] > 0">
+          出現事故專有名詞關鍵字的種類： {{ selectedtAlertNews["R24_count"] }}
+        </h6>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R24_tf'] > 0">
+          出現事故專有名詞關鍵字的詞頻： {{ selectedtAlertNews["R24_tf"] }}
+        </h6>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel class="show-info">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4 class="show-info" >事故訊息關鍵字統計結果</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-chip-list>
+          <h6 class="show-info"  *ngIf="selectedtAlertNews['R31_keyW_list'].length > 0">出現的交通工具關鍵字：</h6>
+          <mat-chip *ngFor="let r31 of selectedtAlertNews['R31_keyW_list']">{{
+            r31
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info"  *ngIf="selectedtAlertNews['R31_count'] > 0">
+          出現交通工具關鍵字的種類： {{ selectedtAlertNews["R31_count"] }}
+        </h6>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R31_tf'] > 0">
+          出現交通工具關鍵字的詞頻： {{ selectedtAlertNews["R31_tf"] }}
+        </h6>
+
+
+        <mat-chip-list>
+          <h6 class="show-info"  *ngIf="selectedtAlertNews['R32_keyW_list'].length > 0">出現的包裝容器關鍵字：</h6>
+          <mat-chip *ngFor="let r32 of selectedtAlertNews['R32_keyW_list']">{{
+            r32
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R32_count'] > 0">
+          出現包裝容器關鍵字的種類： {{ selectedtAlertNews["R32_count"] }}
+        </h6>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R32_tf'] > 0">
+          出現包裝容器關鍵字的詞頻： {{ selectedtAlertNews["R32_tf"] }}
+        </h6>
+
+
+        <mat-chip-list>
+          <h6 class="show-info"  *ngIf="selectedtAlertNews['R33_keyW_list'].length > 0">出現的危害特性關鍵字：</h6>
+          <mat-chip *ngFor="let r33 of selectedtAlertNews['R33_keyW_list']">{{
+            r33
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info"  *ngIf="selectedtAlertNews['R33_count'] > 0">
+          出現危害特性關鍵字的種類： {{ selectedtAlertNews["R33_count"] }}
+        </h6>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R33_tf'] > 0">
+          出現危害特性關鍵字的詞頻： {{ selectedtAlertNews["R33_tf"] }}
+        </h6>
+
+        <mat-chip-list>
+          <h6 class="show-info"  *ngIf="selectedtAlertNews['R34_keyW_list'].length > 0">出現的救災單位/研究機構關鍵字：</h6>
+          <mat-chip *ngFor="let r34 of selectedtAlertNews['R34_keyW_list']">{{
+            r34
+          }}</mat-chip>
+        </mat-chip-list>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R34_count'] > 0">
+          出現救災單位/研究機構關鍵字的種類：
+          {{ selectedtAlertNews["R34_count"] }}
+        </h6>
+
+        <h6 class="show-info" *ngIf="selectedtAlertNews['R34_tf'] > 0">
+          出現救災單位/研究機構關鍵字的詞頻： {{ selectedtAlertNews["R34_tf"] }}
+        </h6>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>

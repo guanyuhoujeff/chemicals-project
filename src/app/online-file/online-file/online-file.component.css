@@ -1,0 +1,147 @@
+
+
+.show-content{
+  text-indent: 20px hanging each-line;
+  width: 100%;
+  height: 400px;
+
+  box-sizing: border-box;
+
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 20px;
+  resize: none;
+}
+
+/* 選單框線 */
+#textarea-rcorners {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 25px;
+
+  padding: 20px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+
+}
+
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+      width: 100%;
+      padding: 0;
+  }
+}
+
+
+.example-button-row{
+  margin-left:15%;
+}
+
+
+.example-button-row button{
+  width: 150px;
+  margin-left: 60px;
+}
+
+/* 選單框線 */
+#rcorners2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+}
+/* 選單打勾欄 */
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+
+/* 標記文章的card */
+.marked-card {
+  width: 100%;
+  /* max-height: 200px; */
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.show-info{
+  padding: 20px;
+  font-size: 20px;
+}
