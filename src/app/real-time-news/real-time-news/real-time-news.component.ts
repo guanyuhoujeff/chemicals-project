@@ -61,8 +61,11 @@ export class RealTimeNewsComponent implements OnInit, OnDestroy {
           // return a.alertCount < b.alertCount ? 1 : -1;
         });
         const filterAlertRankList = this.allRealTimeNewsObjectList.filter(theRealTimeObject => {
+          console.log('theRealTimeObject ', theRealTimeObject);
           // tslint:disable-next-line:no-unused-expression
           return theRealTimeObject['R1_count'] > 0 &&
+          theRealTimeObject['R1_keyW_list'].indexOf('汽油') === -1 &&
+          theRealTimeObject['R34_keyW_list'].indexOf('中油') === -1 &&
           // (theRealTimeObject['R21_count'] +
           // theRealTimeObject['R22_count'] +
           // theRealTimeObject['R23_count'] +
